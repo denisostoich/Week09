@@ -2,7 +2,7 @@
 
 This is the README file used in the problems of the "Become a QA Automation" course.
 
-JavaScript exercises.
+Functions & DOM.
 
 ---
 

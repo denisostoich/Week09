@@ -5,21 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Denis Ostoich">
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<!--<link rel="stylesheet" type="text/css" href="style.css">-->
 </head>
 <body>
     <h1>
         Login Form
     </h1>
-    <div id="error"></div>
-    <form id="login-form"></form>
-        <label for="email-input">Email</label>
-        <input type="email" id="email-input" required>
-        <label for="password-input">Password</label>
-        <input type="password" id="password-input" required>
+    <div id="validation">
+    </div>
+    <form id="login-form">
+        <div>
+            <label for="email-input">Email</label>
+            <input type="email" id="email-input" required>
+        </div>
+        <div>
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" required>
+        </div>
         <a href="register.html">No tienes cuenta?</a>
-        <button type="submit">Iniciar Sesión</button>
-
+        <div>
+            <button type="submit">Iniciar Sesión</button>
+        </div>
+    </form>
     <script src="login.js"></script>
 </body>
 </html>
