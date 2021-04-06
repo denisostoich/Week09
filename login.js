@@ -1,5 +1,5 @@
-var validation = document.querySelector('validation');
-var list = document.querySelector('List')
+var validation = document.querySelector('.validation');
+var list = document.querySelector('.list')
 
 var fieldsQuantity = function () {
     validation.style.display = 'flex';
@@ -41,8 +41,8 @@ validAnchor();
 
 var validBtns = function() {
     validation.style.display = 'flex';
-    var submitBtn = document.querySelector('submit').nodeValue;
-    var submitValue = 'Iniciar Sesión';
+    var submitBtn = document.querySelector('submit');
+    var submitValue = 'Log in';
     if (submitBtn = submitValue) {
         var btnsNode = document.createElement("LI");
         var btnsText = document.createTextNode('Buttons content is correct');
@@ -58,10 +58,11 @@ var validBtns = function() {
 }
 validBtns();
 
-var validation = function () {
+var finalValidation = function () {
     if ((fieldsQuantity = true) && (validAnchor = true) && (validBtns = true)) {
         validation.style.display = 'flex';
+        validation.style.color = 'green';
         validation.textContent = 'Every validation has passed';
     }
 }
-validation();
+finalValidation();
