@@ -5,7 +5,7 @@ var fieldsQuantity = function () {
     validation.style.display = 'flex';
     var fields = document.querySelectorAll('input');
     var fieldsNumber = fields.length;
-    if (fieldsNumber = 4) {
+    if (fieldsNumber == 5) {
         var fieldsNode = document.createElement("LI");
         var fieldsText = document.createTextNode('Input fields are correct');
         fieldsNode.appendChild(fieldsText);
@@ -22,9 +22,9 @@ fieldsQuantity()
 
 var validAnchor = function () {
     validation.style.display = 'flex';
-    var anchor = document.querySelector('a').href;
+    var anchor = document.querySelector('#link').href;
     var validHref = 'login.html';
-    if (anchor = validHref) {
+    if (anchor == validHref) {
         var anchorNode = document.createElement("LI");
         var anchorText = document.createTextNode('Anchor tag is valid');
         anchorNode.appendChild(anchorText);
@@ -41,9 +41,9 @@ validAnchor();
 
 var validBtns = function() {
     validation.style.display = 'flex';
-    var submitBtn = document.querySelector('submit');
-    var submitValue = 'Registrarse';
-    if (submitBtn = submitValue) {
+    var submitBtn = document.querySelector('input[type="submit"]').value;
+    var submitValue = 'Register';
+    if (submitBtn == submitValue) {
         var btnsNode = document.createElement("LI");
         var btnsText = document.createTextNode('Buttons content is correct');
         btnsNode.appendChild(btnsText);
@@ -52,14 +52,14 @@ var validBtns = function() {
     else {
         var nBtnsNode = document.createElement("LI");
         var nBtnsText = document.createTextNode('Buttons content is wrong');
-        btnsNode.appendChild(nBtnsText);
+        nBtnsNode.appendChild(nBtnsText);
         list.appendChild(nBtnsNode);
     }
 }
 validBtns();
 
 var finalValidation = function () {
-    if ((fieldsQuantity = true) && (validAnchor = true) && (validBtns = true)) {
+    if ((fieldsQuantity == true) && (validAnchor == true) && (validBtns == true)) {
         validation.style.display = 'flex';
         validation.style.color = 'green';
         validation.textContent = 'Every validation has passed';
