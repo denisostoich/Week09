@@ -5,17 +5,16 @@ var expresiones = {
 	confirmPassword: /^[a-zA-Z0-9]{8,16}$/,  // Al menos 8 caracteres, formados por letras y números.
 }
 
-
 var campos = {
     email: false,
     fullName: false,
-    ppassword: false,
+    password: false,
 }
 
 var formulario = document.getElementById('form');
 var inputs = document.querySelectorAll('#form input');
 var validation = document.querySelector('.validation');
-var list = document.querySelector('.list')
+var list = document.querySelector('.list');
 
 var validForm = function (e) {
     switch (e.target.name){
@@ -84,7 +83,7 @@ formulario.addEventListener('submit', function(e){
     e.preventDefault();
     if (campos.email && campos.fullName && campos.password){
         formulario.reset();
-    }
+    } 
 })
 
 var fieldsQuantity = function () {
