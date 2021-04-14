@@ -81,13 +81,13 @@ form a:hover {
 }
 
 .formulario-grupo-correcto {
-    color: rgb(0, 255, 0);
     opacity: 1;
+    border: 3px solid rgb(0, 255, 0);
 }
 
 .formulario-grupo-incorrecto {
     opacity: 1;
-    border: 3px solid red;
+    border: 3px solid rgb(255, 0, 0);
 }
 
 .formulario-grupo {

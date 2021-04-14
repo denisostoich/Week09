@@ -17,27 +17,27 @@ var validForm = function (e) {
     switch (e.target.name){
         case "email-input":
             if (expresiones.email.test(e.target.value)) {
-                document.getElementById('email-input').classList.remove('formulario-incorrecto');
-                document.getElementById('email-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-email .formularioGrupo').classList.remove('formulario-input-error');
+                document.getElementById('email-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('email-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-email .formulario-input').classList.remove('formulario-input-error');
                 campos['email'] = true;
             } else {
                 document.getElementById('email-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('email-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-email .formularioGrupo').classList.add('formulario-input-error'); 
+                document.getElementById('email-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-email .formulario-input').classList.add('formulario-input-error'); 
                 campos['email'] = false;
             }
         break;  
         case "password-input":
             if (expresiones.password.test(e.target.value)) {
-                document.getElementById('password-input').classList.remove('formulario-incorrecto');
-                document.getElementById('password-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-password .formulario-grupo').classList.remove('formulario-input-error');
+                document.getElementById('password-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('password-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-password .formulario-input').classList.remove('formulario-input-error');
                 campos['password'] = true;
             } else {
                 document.getElementById('password-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('password-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-password .formulario-grupo').classList.add('formulario-input-error');
+                document.getElementById('password-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-password .formulario-input').classList.add('formulario-input-error');
                 campos['password'] = false;
             }
         break;
@@ -45,6 +45,7 @@ var validForm = function (e) {
 }
     
 inputs.forEach( function(input){
+    input.addEventListener('keyup', validForm);
     input.addEventListener('blur', validForm);   
 })
 

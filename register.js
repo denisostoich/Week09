@@ -20,40 +20,40 @@ var validForm = function (e) {
     switch (e.target.name){
         case "email-input":
             if (expresiones.email.test(e.target.value)) {
-                document.getElementById('email-input').classList.remove('formulario-incorrecto');
-                document.getElementById('email-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-email .formularioGrupo').classList.remove('formulario-input-error');
+                document.getElementById('email-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('email-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-email .formulario-input').classList.remove('formulario-input-error');
                 campos['email'] = true;
             } else {
                 document.getElementById('email-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('email-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-email .formularioGrupo').classList.add('formulario-input-error'); 
+                document.getElementById('email-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-email .formulario-input').classList.add('formulario-input-error'); 
                 campos['email'] = false;
             }
         break;
         case "full-name-input":
             if (expresiones.fullName.test(e.target.value)) {
-                document.getElementById('full-name-input').classList.remove('formulario-incorrecto');
-                document.getElementById('full-name-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-nombre .formulario-grupo').classList.remove('formulario-input-error');
+                document.getElementById('full-name-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('full-name-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-nombre .formulario-input').classList.remove('formulario-input-error');
                 campos['fullName'] = true;
             } else {
                 document.getElementById('full-name-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('full-name-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-nombre .formulario-grupo').classList.add('formulario-input-error');
+                document.getElementById('full-name-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-nombre .formulario-input').classList.add('formulario-input-error');
                 campos['fullName'] = false;
             }
         break;  
         case "password-input":
             if (expresiones.password.test(e.target.value)) {
-                document.getElementById('password-input').classList.remove('formulario-incorrecto');
-                document.getElementById('password-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-password .formulario-grupo').classList.remove('formulario-input-error');
+                document.getElementById('password-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('password-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-password .formulario-input').classList.remove('formulario-input-error');
                 campos['password'] = true;
             } else {
                 document.getElementById('password-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('password-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-password .formulario-grupo').classList.add('formulario-input-error');
+                document.getElementById('password-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-password .formulario-input').classList.add('formulario-input-error');
                 campos['password'] = false;
             }
         break;
@@ -61,14 +61,14 @@ var validForm = function (e) {
             var inputPassword1 = document.getElementById('password-input');
             var inputPassword2 = document.getElementById('confirm-password-input');
             if (inputPassword1.value !== inputPassword2.value) {
-                document.getElementById('confirm-password-input').classList.remove('formulario-incorrecto');
-                document.getElementById('confirm-password-input').classList.add('formulario-correcto');
-                document.querySelector('#grupo-confirm-password .formulario-grupo').classList.remove('formulario-input-error');
+                document.getElementById('confirm-password-input').classList.add('formulario-grupo-incorrecto');
+                document.getElementById('confirm-password-input').classList.remove('formulario-grupo-correcto');
+                document.querySelector('#grupo-confirm-password .formulario-input').classList.add('formulario-input-error');
                 campos['password'] = true;
             } else {
-                document.getElementById('confirm-password-input').classList.add('formulario-grupo-incorrecto');
-                document.getElementById('confirm-password-input').classList.remove('formulario-correcto');
-                document.querySelector('#grupo-confirm-password .formulario-grupo').classList.add('formulario-input-error');
+                document.getElementById('confirm-password-input').classList.remove('formulario-grupo-incorrecto');
+                document.getElementById('confirm-password-input').classList.add('formulario-grupo-correcto');
+                document.querySelector('#grupo-confirm-password .formulario-input').classList.remove('formulario-input-error');
                 campos['password'] = false;
             }
         break;
@@ -76,6 +76,7 @@ var validForm = function (e) {
 }
     
 inputs.forEach( function(input){
+    input.addEventListener('keyup', validForm);
     input.addEventListener('blur', validForm);   
 })
 
