@@ -16,6 +16,10 @@ body {
     list-style-type: none;
 }
 
+.data {
+    list-style-type: none;
+}
+
 .content {
     margin-top: 30px;
     display: flex;
