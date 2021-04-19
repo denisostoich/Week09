@@ -1,6 +1,6 @@
 var expresiones = {
     email: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/,
-    fullName: /^[a-zA-ZÀ-ÿ]+\ [a-zA-ZÀ-ÿ]{6,40}$/,         // Debe tener más de 6 letras y al menos un espacio entre medio.    
+    fullName: /^([a-zA-ZÀ-ÿ]+\ [a-zA-ZÀ-ÿ]){6,40}$/,         // Debe tener más de 6 letras y al menos un espacio entre medio.    
 	password: /^[a-zA-Z0-9]{8,16}$/,         // Al menos 8 caracteres, formados por letras y números.
 	confirmPassword: /^[a-zA-Z0-9]{8,16}$/,  // Al menos 8 caracteres, formados por letras y números.
 }
@@ -84,11 +84,32 @@ formulario.addEventListener('submit', function(e){
     if (campos.email && campos.fullName && campos.password){
         formulario.reset();
         data.style.display = 'flex';
-        data.innerHTML ="Email: "+document.querySelector('#email-input').value+
-        "\nFull Name: "+document.querySelector('#full-name-input').value+"\nPassword: "+document.querySelector('#password-input').value;
-        fetch('https://jsonplaceholder.typicode.com/users?email='+document.querySelector('#email-input').value)
-            .then (response => response.json())
-            .then (json => console.log(json));
-        console.log("https://jsonplaceholder.typicode.com/users?email="+document.querySelector('#email-input').value);
+        data.innerHTML ="Email: " + document.querySelector('#email-input').value +
+         "\nFull Name: " + document.querySelector('#full-name-input').value + "\nPassword: "+document.querySelector('#password-input').value;
+        sendRegisterForm();
+    }else {
+        data.style.display = 'flex';
+        data.style.color = 'red';
+        data.textContent = 'Complete the fields properly';
     } 
 })
+
+//Post Request
+function sendRegisterForm(){
+    fetch('http://localhost:4000/register',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            email: document.getElementById('email-input').value,
+            fullName: document.getElementById('full-name-input').value,
+            password: document.getElementById('password-input').value,
+        })
+    })
+    .then (response => response.json())
+    .then (data => console.log(data))
+    .catch(function(error){
+        console.log("Error sending data");
+    })
+}

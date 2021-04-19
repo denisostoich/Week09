@@ -53,11 +53,31 @@ formulario.addEventListener('submit', function(e){
     if (campos.email && campos.password){
         formulario.reset();
         data.style.display = 'flex';
-        data.innerHTML ="Email: "+document.querySelector('#email-input').value+
-        "\nPassword: "+document.querySelector('#password-input').value;
-        fetch('https://jsonplaceholder.typicode.com/users?email='+document.querySelector('#email-input').value)
-            .then (response => response.json())
-            .then (json => console.log(json));
-        console.log("https://jsonplaceholder.typicode.com/users?email="+document.querySelector('#email-input').value);
+        data.innerHTML ="Email: "+ document.querySelector('#email-input').value +
+         "\nPassword: " + document.querySelector('#password-input').value;
+        sendLoginForm();
+    }else {
+        data.style.display = 'flex';
+        data.style.color = 'red';
+        data.textContent = 'Complete the fields properly';
     }
 })
+
+//Put Request
+function sendLoginForm(){
+    fetch('http://localhost:4000/login',{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            email: document.getElementById('email-input').value,
+            password: document.getElementById('password-input').value,
+        })
+    })
+    .then (response => response.json())
+    .then (data => console.log(data))
+    .catch(function(error){
+        console.log("Error sending data");
+    })
+} 
